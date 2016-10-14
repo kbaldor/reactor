@@ -1,0 +1,20 @@
+reactor Ex1 {
+
+input:
+  in1  : Integer
+  in2  : Integer
+
+  newAddress     : String*
+  expiredAddress : String*
+
+output:
+  out1 : in1 + in2
+
+private:
+
+  addresses : [add: newAddress
+               del: expiredAddress]
+
+  streams : [Stream(address) for address in addresses]
+
+}
