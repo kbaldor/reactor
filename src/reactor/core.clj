@@ -2,7 +2,9 @@
   (:require [clojure.core.match :refer [match]]
             [reactor.antlr-utils :refer :all]
             [clojure.math.numeric-tower :as math])
-  (:import calculatorLexer calculatorParser)
+  (:use [clojure.pprint]
+        [clojure.tools.namespace.repl :only (refresh)])  
+  (:import reactorLexer reactorParser)
   (:gen-class))
 
 (defn toAST [tree]
@@ -28,11 +30,18 @@
          :else               ast
          ))
 
-(def tree (parse calculatorLexer calculatorParser 'equation "1+2-3e2=4"))
-(def ast (clojure.walk/postwalk toAST tree))
+(defn printer [item]
+  (print item)
+  (println (meta item)))
+
+(defn metaTree [tree]
+  (printer (if (seq? tree) (first tree) tree)))
+
+(def tree (parse reactorLexer reactorParser 'reactor " reactor R { input: in : Integer output: } "))
+(def ast (clojure.walk/postwalk metaTree tree))
 (println "parse tree: " tree)
-(println "pretty    : " ast)
-(println "value     : " (clojure.walk/postwalk evalAST ast))
+;(println "pretty    : " ast)
+;(println "value     : " (clojure.walk/postwalk evalAST ast))
 
 ;(def rtree (parse-file reactorLexer reactorParser 'reactor "examples/ex1.rct"))
 ;(println "react tree: " rtree)
