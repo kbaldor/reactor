@@ -6,6 +6,7 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/core.match "0.3.0-alpha4"]
                  [org.antlr/antlr4 "4.5.3"]
+                 [antlr-clj/antlr-clj "0.1.0-SNAPSHOT"]
                  [org.clojure/math.numeric-tower "0.0.4"]]
   :plugins [[lein-antlr "0.3.0"]]
   :main ^:skip-aot reactor.core

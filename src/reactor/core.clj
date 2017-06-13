@@ -1,6 +1,6 @@
 (ns reactor.core
   (:require [clojure.core.match :refer [match]]
-            [reactor.antlr-utils :refer :all]
+            [antlr-clj.core :refer :all]
             [clojure.math.numeric-tower :as math])
   (:use [clojure.pprint]
         [clojure.tools.namespace.repl :only (refresh)])  
